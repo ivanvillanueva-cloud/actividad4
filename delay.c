@@ -42,7 +42,7 @@ void delay_ms(uint32_t ms)
 	while (ms--)
 	{
 		// Delay 1ms
-		delay_us(1000);
+		delay_us(10000);
 	}
 }
 

@@ -6,29 +6,16 @@
 
 
 
-
 int main(void)
 {
     init_gpio();
-    init_interruputs();
-    timer2_pwm();
-    timer3_pwm();
-	  void delay_ms(uint32_t ms);
+	  timer2_pwm();
+		timer3_pwm();
+		init_interruputs();
     
     while(1)
     {
         
-            motor2_secuencia1(); // 0°->90°->180°
-			delay_ms(1000);
-            motor1_secuencia2();
-			delay_ms(100000);
-		}
-        
-            motor2_secuencia1(); // 0°->90°->180°
-            delay_ms(1000);
-            motor2_secuencia2();
-			delay_ms(10000);
+   
         }
-
-
-
+			}

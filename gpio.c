@@ -1,5 +1,5 @@
 #include <stm32f10x.h>
-#include "gpio.h"
+
 /*
 GPIO program:
 - Enable the clock signal for the GPIO.
@@ -24,7 +24,14 @@ void init_gpio(void){
 	GPIOA->CRL &= ~((1 << 5)|(1 << 4));	//input mode
 	GPIOA->CRL |= (1 << 7);	//alternate function input with pull-up
 	GPIOA->CRL &= ~(1 << 6);
-	GPIOA->ODR |= (1<<1);
+	
+	
+	//PA2 CONFIG EXIT2
+	GPIOA->CRL &= ~((1 << 8)|(1 << 9));	//input mode
+	GPIOA->CRL |= (1 << 11);	//alternate function input with pull-up
+	GPIOA->CRL &= ~(1 << 10);
+	
+	
 	
 	//PA6 config for TIMER3 SERVO 2
 	GPIOA->CRL |= (1 << 25);	//mode output 2MHz.

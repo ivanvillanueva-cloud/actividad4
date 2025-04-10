@@ -11,6 +11,8 @@ EXTI program:
 */
 #include <stm32f10x.h>
 #include "interrupts.h"
+#include "garrita.h"
+#include "leds.h"
 
 
 
@@ -24,6 +26,8 @@ void init_interruputs()
 	AFIO->EXTICR[0] = (1 << 0); //Selects PA1 for line 1
 	EXTI->FTSR |= (1 << 1);	//interrupt on falling edge
 	EXTI->IMR |= (1 << 1);	//enable interrupt
+  NVIC->ISER[0] |= (1 << 7);
+	
 	AFIO->EXTICR[0] = (1 << 8); //Selects PA1 for line 1
 	EXTI->FTSR |= (1 << 2);	//interrupt on falling edge
 	EXTI->IMR |= (1 << 2);	//enable interrupt
@@ -33,16 +37,17 @@ void init_interruputs()
 }
 void EXTI_IRQHandler()
 {
- EXTI->PR |= (1 << 1);
-	
- GPIOC->ODR ^= (1 << 13);
-	
+ EXTI->PR |= (1 << 4);
+	motor1secuencia1();
+	motor1secuencia2();
+	stoptim2();
  }
 void EXTI2_IRQHandler()
 {
     EXTI->PR |= (1 << 2);
-   
-    GPIOC->ODR ^= (1 << 13);
+	motor2secuencia1();
+	motor2secuencia2();
+		stoptim3(); 
 }
 
 
